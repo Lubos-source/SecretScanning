@@ -23,3 +23,15 @@ tags = ["secret", "apikey", "token"]
 description = "Generic Key or Credential"
 regex = '''(?i)(key|credential|secret)\s*=\s*['"][^'"]+['"]'''
 tags = ["secret", "generic"]
+
+
+
+[[rules]]
+description = "Hardcoded Username"
+regex = '''(?i)\b(admin[_\-]?username|user[_\-]?name)\s*=\s*["'][^"']{3,}["']'''
+tags = ["secret", "username"]
+
+[[rules]]
+description = "Hardcoded Password"
+regex = '''(?i)\b(admin[_\-]?password|pass[_\-]?word)\s*=\s*['"][^'"]{6,}['"]'''
+tags = ["secret", "password"]
