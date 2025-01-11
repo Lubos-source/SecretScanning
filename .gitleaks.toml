@@ -1,25 +1,34 @@
 title = "Custom Gitleaks Config for Flask App"
+
+[extend]
+useDefault = true
+
 [[rules]]
+id = "flask_secret_personal_regex"
 description = "Flask Secret Key"
 regex = '''(?i)app\.secret[_\-]?key\s*=\s*['"][^'"]+['"]'''
 tags = ["secret", "flask", "key"]
 
 [[rules]]
+id = "potential_API_key_personal_regex"
 description = "Potential API Key or Token"
 regex = '''(?i)(api[_\-]?key|token)\s*=\s*['"][a-zA-Z0-9_\-]{16,}['"]'''
 tags = ["secret", "apikey", "token"]
 
 [[rules]]
+id = "genretic_Key_or_Cred_personal_regex"
 description = "Generic Key or Credential"
 regex = '''(?i)(key|credential|secret)\s*=\s*['"][^'"]+['"]'''
 tags = ["secret", "generic"]
 
 [[rules]]
+id = "hardcoded_username_Personal_regex"
 description = "Hardcoded Username"
 regex = '''(?i)\b(admin[_\-]?username|user[_\-]?name)\s*=\s*['"][^'"]{3,}['"]'''
 tags = ["secret", "username"]
 
 [[rules]]
+id = "hardcoded_password_personal_regex"
 description = "Hardcoded Password"
 regex = '''(?i)\b(admin[_\-]?password|pass[_\-]?word)\s*=\s*['"][^'"]{6,}['"]'''
 tags = ["secret", "password"]
