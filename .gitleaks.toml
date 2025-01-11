@@ -1,0 +1,20 @@
+title = "Custom Gitleaks Config - ReGex"
+[[rules]]
+description = "Hardcoded Password"
+regex = '''(?i)(password|passwd|pwd)\s*=\s*['"][^'"]+['"]'''
+tags = ["secret", "password"]
+
+[[rules]]
+description = "Flask Secret Key"
+regex = '''(?i)secret[_\-]?key\s*=\s*['"][^'"]{8,}['"]'''
+tags = ["secret", "flask", "key"]
+
+[[rules]]
+description = "Hardcoded Username"
+regex = '''(?i)(username|user)\s*=\s*['"][^'"]+['"]'''
+tags = ["secret", "username"]
+
+[[rules]]
+description = "API Key"
+regex = '''(?i)(apikey|api[_\-]?key)\s*=\s*['"][a-zA-Z0-9_\-]{16,}['"]'''
+tags = ["secret", "apikey"]
