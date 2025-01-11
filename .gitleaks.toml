@@ -1,20 +1,25 @@
-title = "Custom Gitleaks Config - ReGex"
-[[rules]]
-description = "Hardcoded Password"
-regex = '''(?i)(password|passwd|pwd)\s*=\s*['"][^'"]+['"]'''
-tags = ["secret", "password"]
-
+title = "Custom Gitleaks Config for Flask App"
 [[rules]]
 description = "Flask Secret Key"
-regex = '''(?i)secret[_\-]?key\s*=\s*['"][^'"]{8,}['"]'''
+regex = '''(?i)app\.secret[_\-]?key\s*=\s*['"][^'"]{8,}['"]'''
 tags = ["secret", "flask", "key"]
 
 [[rules]]
 description = "Hardcoded Username"
-regex = '''(?i)(username|user)\s*=\s*['"][^'"]+['"]'''
+regex = '''(?i)(admin[_\-]?username|user[_\-]?name)\s*=\s*['"][^'"]+['"]'''
 tags = ["secret", "username"]
 
 [[rules]]
-description = "API Key"
-regex = '''(?i)(apikey|api[_\-]?key)\s*=\s*['"][a-zA-Z0-9_\-]{16,}['"]'''
-tags = ["secret", "apikey"]
+description = "Hardcoded Password"
+regex = '''(?i)(admin[_\-]?password|pass[_\-]?word)\s*=\s*['"][^'"]+['"]'''
+tags = ["secret", "password"]
+
+[[rules]]
+description = "Potential API Key or Token"
+regex = '''(?i)(api[_\-]?key|token)\s*=\s*['"][a-zA-Z0-9_\-]{16,}['"]'''
+tags = ["secret", "apikey", "token"]
+
+[[rules]]
+description = "Generic Key or Credential"
+regex = '''(?i)(key|credential|secret)\s*=\s*['"][^'"]+['"]'''
+tags = ["secret", "generic"]
